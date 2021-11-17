@@ -14,6 +14,6 @@ namespace BoxOffice
     /// </summary>
     public partial class App : Application
     {
-        public static string ConnectionString = "Data Source=r00tER-FullPc;Initial Catalog=DBwithCSharp;Integrated Security=True";
+        public static MainWindow OpenedMainWindow = null;
     }
 }

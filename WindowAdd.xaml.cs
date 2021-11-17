@@ -22,95 +22,59 @@ namespace BoxOffice
     /// </summary>
     public partial class WindowAdd : Window
     {
-        private DataTable _dtTypes = new DataTable("Types");
-        private DataTable _dtColors = new DataTable("Colors");
+        //private DataTable _dtTypes = new DataTable("Types");
+        //private DataTable _dtColors = new DataTable("Colors");
 
         private int _idType = 0;
         private int _idColor = 0;
         public WindowAdd()
         {
             InitializeComponent();
-            InitializeColorsAndTypes();
+            FillColors();
+            FillTypes();
+            //InitializeColorsAndTypes();
         }
 
-        private void InitializeColorsAndTypes()
+        private void FillColors()
         {
-            string sqlExpression1 = "select Type from Types";
-            string sqlExpression2 = "select Color from Colors";
-           
-            using (SqlConnection connection = new SqlConnection(App.ConnectionString))
+            foreach (DataRow row in DataBaseHandler.GetColorsOrTypes("Color", "Colors").Rows)
             {
-                connection.Open();
-
-                SqlCommand command1 = new SqlCommand(sqlExpression1, connection);
-                command1.ExecuteNonQuery();
-
-                SqlDataAdapter dataAdp1 = new SqlDataAdapter(command1);
-                //DataTable dtTypes = new DataTable("Types"); // В скобках указываем название таблицы
-
-                dataAdp1.Fill(_dtTypes);
-                foreach (DataRow row in _dtTypes.Rows)
+                foreach (object item in row.ItemArray)
                 {
-                    foreach (object item in row.ItemArray)
-                    {
-                        TypeCombo.Items.Add(item);
-                    }
-                    
+                    AddItemToComboBox(item.ToString(), ColorCombo);
                 }
-
-                SqlCommand command2 = new SqlCommand(sqlExpression2, connection);
-                command2.ExecuteNonQuery();
-
-                SqlDataAdapter dataAdp2 = new SqlDataAdapter(command2);
-                //DataTable dtColors = new DataTable("Colors"); // В скобках указываем название таблицы
-
-                dataAdp2.Fill(_dtColors);
-                foreach (DataRow row in _dtColors.Rows)
-                {
-                    foreach (object item in row.ItemArray)
-                    {
-                        ColorCombo.Items.Add(item);
-                    }
-                }
-
-                connection.Close();
             }
-         
-        }
-        private void AddToDbButton_OnClick(object sender, RoutedEventArgs e)
-        {
-            if (NewName.Text == "" || NewPrice.Text == "" || ColorCombo.SelectedValue == null ||
-                TypeCombo.SelectedValue == null)
-            {
-                MessageBox.Show("Заполните все поля!");
-                return;
-            }
-
-            string name = NewName.Text;
-            int price = Int32.Parse(NewPrice.Text);
             
-            string sqlExpression1 = "insert into Food values('"+ NewName.Text+"', "+ _idColor+", "+ price+", "+ _idType+")";
-            using (SqlConnection connection = new SqlConnection(App.ConnectionString))
+        }
+        private void FillTypes()
+        {
+            foreach (DataRow row in DataBaseHandler.GetColorsOrTypes("Type", "Types").Rows)
             {
-                connection.Open();
-
-                SqlCommand command1 = new SqlCommand(sqlExpression1, connection);
-
-
-                command1.ExecuteNonQuery();
-                connection.Close();
+                foreach (object item in row.ItemArray)
+                {
+                    AddItemToComboBox(item.ToString(), TypeCombo);
+                }
             }
-            Close();
+            
         }
 
+        private void AddItemToComboBox(string newItem, ComboBox cb)
+        {
+            cb.Items.Add(newItem);
+        }
         private void AddNewColorButton_OnClick(object sender, RoutedEventArgs e)
         {
-            
+            WindowAddColourOrType newProduct = new WindowAddColourOrType(KindTable.Color);
+            newProduct.ShowDialog();
+            AddItemToComboBox(newProduct.NameOfNewItem, ColorCombo);
         }
 
         private void AddNewTypeButton_OnClick(object sender, RoutedEventArgs e)
         {
-           
+            WindowAddColourOrType newProduct = new WindowAddColourOrType(KindTable.Type);
+
+            newProduct.ShowDialog();
+            AddItemToComboBox(newProduct.NameOfNewItem, TypeCombo);
         }
 
         private void TypeCombo_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -122,5 +86,19 @@ namespace BoxOffice
         {
             _idColor = ColorCombo.SelectedIndex + 1;
         }
+
+        private void AddToDbButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            if (NewName.Text == "" || NewPrice.Text == "" || ColorCombo.SelectedValue == null ||
+                TypeCombo.SelectedValue == null)
+            {
+                MessageBox.Show("Заполните все поля!");
+                return;
+            }
+            //int price = Int32.Parse(NewPrice.Text);
+            //string sqlExpression = "insert into Food values('" + NewName.Text + "', " + _idColor + ", " + price + ", " + _idType + ")";
+            DataBaseHandler.AddItemToFood(NewName.Text, _idColor.ToString(), NewPrice.Text.ToString(), _idType.ToString());
+        }
     }
+
 }

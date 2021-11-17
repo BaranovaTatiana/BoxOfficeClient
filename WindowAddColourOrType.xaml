@@ -8,8 +8,8 @@
         Title="WindowAddColourOrType" Height="200" Width="500" Background="Aqua">
     <Grid>
         <Label x:Name="LabelAdd" Content="Напишите новый " FontSize="40" HorizontalAlignment="Center"></Label>
-        <TextBox x:Name="TextBox" HorizontalAlignment="Left" VerticalAlignment="Center" Height="70" Width="380" Margin="20 40 0 0"></TextBox>
-        <Button x:Name="Button" Click="Button_OnClick" HorizontalAlignment="Right" VerticalAlignment="Center" Height="70" Width="70" Margin="20 40 20 0" Content="OK" FontSize="40"></Button>
+        <TextBox x:Name="TextBoxAdd" HorizontalAlignment="Left" VerticalAlignment="Center" Height="70" Width="380" Margin="20 40 0 0"></TextBox>
+        <Button x:Name="ButtonAdd" Click="Button_OnClick"  HorizontalAlignment="Right" VerticalAlignment="Center" Height="70" Width="70" Margin="20 40 20 0" Content="OK" FontSize="40"></Button>
 
     </Grid>
 </Window>

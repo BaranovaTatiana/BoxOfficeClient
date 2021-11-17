@@ -19,38 +19,49 @@ namespace BoxOffice
     /// Логика взаимодействия для WindowAddColourOrType.xaml
     /// </summary>
     public partial class WindowAddColourOrType : Window
-    {
-        public WindowAddColourOrType()
+    { 
+        public string  NameOfNewItem
+        {
+            get { return TextBoxAdd.Text; }
+        }
+
+        
+
+        private KindTable _kind;
+        public WindowAddColourOrType(KindTable kind)
         {
             InitializeComponent();
+            _kind = kind;
+            switch (_kind)
+            {
+                case KindTable.Type:
+                    LabelAdd.Content += " тип";
+                    break;
+                case KindTable.Color:
+                    LabelAdd.Content += " цвет";
+                    break;
+            }
         }
+
 
         private void Button_OnClick(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrEmpty(TextBox.Text))
+            if (string.IsNullOrEmpty(TextBoxAdd.Text))
             {
                 MessageBox.Show("Заполните поле");
                 return;
             }
-            string sqlExpression1 = "insert into Food values(@name, @_idColor, @price, @_idType)";
-            using (SqlConnection connection = new SqlConnection(App.ConnectionString))
+
+            switch (_kind)
             {
-                connection.Open();
-
-                SqlCommand command1 = new SqlCommand(sqlExpression1, connection);
-
-                //command1.Parameters.AddWithValue("@name", NewName.Text);
-                //command1.Parameters.AddWithValue("@_idColor", _idColor);
-                //command1.Parameters.AddWithValue("@price", price);
-                //command1.Parameters.AddWithValue("@_idType", _idType);
-
-                command1.ExecuteNonQuery();
-                connection.Close();
+                case KindTable.Type:
+                    DataBaseHandler.AddItemToColorOrType(TextBoxAdd.Text, "Types");
+                    break;
+                case KindTable.Color:
+                    DataBaseHandler.AddItemToColorOrType(TextBoxAdd.Text, "Colors");
+                    break;
             }
             Close();
-
-
-
         }
     }
 }

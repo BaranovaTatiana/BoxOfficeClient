@@ -21,33 +21,17 @@ namespace BoxOffice
     /// Логика взаимодействия для MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
-    {  
+    {
         public MainWindow()
         {
             InitializeComponent();
-            ShowMainTable();
+            FillTable();
+            App.OpenedMainWindow = this;
+            
         }
-
-        private void ShowMainTable()
+        private void FillTable()
         {
-            string sqlExpression = "select Food.ID, Name, Types.Type, Colors.Color, Price " +
-                                   "from Food inner join Types " +
-                                   "on Food.Type = Types.ID inner join Colors " +
-                                   "on Food.Color = Colors.ID";
-            using (SqlConnection connection = new SqlConnection(App.ConnectionString))
-            {
-                connection.Open();
-                SqlCommand command = new SqlCommand(sqlExpression, connection);
-                command.ExecuteNonQuery();
-
-                SqlDataAdapter dataAdp = new SqlDataAdapter(command);
-                DataTable dt = new DataTable("Food"); // В скобках указываем название таблицы
-                dataAdp.Fill(dt);
-
-                InfoDataGrid.ItemsSource = dt.DefaultView; // Сам вывод 
-
-                connection.Close();
-            }
+            InfoDataGrid.ItemsSource = DataBaseHandler.GetAllItems().DefaultView;
         }
         private void AddButton_OnClick(object sender, RoutedEventArgs e)
         {
@@ -56,7 +40,29 @@ namespace BoxOffice
         }
         private void DeleteButton_OnClick(object sender, RoutedEventArgs e)
         {
+            DeleteItemFromMainTable();
+        }
+
+        public void DeleteItemFromMainTable()
+        {
+            var selectedItem = (DataRowView)InfoDataGrid.SelectedItem;
+            //var gg = (DataView)InfoDataGrid.ItemsSource;
+            //gg.Table.Rows.Remove(selectedItem.Row);
+            var idItem = selectedItem[0];
             
+            DataBaseHandler.DeleteItemFromFood(Int32.Parse(idItem.ToString()));
+
+            selectedItem.Delete();
+
+            MessageBox.Show("Продукт удален!");
+        }
+
+        private void InfoDataGrid_OnPreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Delete)
+            {
+                DeleteItemFromMainTable();
+            }
         }
     }
 }
