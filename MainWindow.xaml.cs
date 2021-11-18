@@ -25,44 +25,23 @@ namespace BoxOffice
         public MainWindow()
         {
             InitializeComponent();
-            FillTable();
-            App.OpenedMainWindow = this;
+        }
+
+        
+        private void ButtonToStorehouse_OnClick(object sender, RoutedEventArgs e)
+        {
             
         }
-        private void FillTable()
-        {
-            InfoDataGrid.ItemsSource = DataBaseHandler.GetAllItems().DefaultView;
-        }
-        private void AddButton_OnClick(object sender, RoutedEventArgs e)
-        {
-            WindowAdd newProduct = new WindowAdd();
-            newProduct.Show();
-        }
-        private void DeleteButton_OnClick(object sender, RoutedEventArgs e)
-        {
-            DeleteItemFromMainTable();
-        }
 
-        public void DeleteItemFromMainTable()
+        private void ButtonHelp_OnClick(object sender, RoutedEventArgs e)
         {
-            var selectedItem = (DataRowView)InfoDataGrid.SelectedItem;
-            //var gg = (DataView)InfoDataGrid.ItemsSource;
-            //gg.Table.Rows.Remove(selectedItem.Row);
-            var idItem = selectedItem[0];
             
-            DataBaseHandler.DeleteItemFromFood(Int32.Parse(idItem.ToString()));
-
-            selectedItem.Delete();
-
-            MessageBox.Show("Продукт удален!");
         }
 
-        private void InfoDataGrid_OnPreviewKeyDown(object sender, KeyEventArgs e)
+        private void ButtonBye_OnClick(object sender, RoutedEventArgs e)
         {
-            if (e.Key == Key.Delete)
-            {
-                DeleteItemFromMainTable();
-            }
+            WindowShoppingChoice windowShopping = new WindowShoppingChoice();
+            windowShopping.Show();
         }
     }
 }

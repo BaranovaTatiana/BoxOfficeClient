@@ -14,6 +14,6 @@ namespace BoxOffice
     /// </summary>
     public partial class App : Application
     {
-        public static MainWindow OpenedMainWindow = null;
+        
     }
 }

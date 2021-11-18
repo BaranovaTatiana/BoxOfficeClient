@@ -7,12 +7,17 @@
         xmlns:collections="clr-namespace:System.Collections;assembly=mscorlib"
         mc:Ignorable="d"
 
-        Title="MainWindow" Height="450" Width="800" Background="Pink">
+        Title="MainWindow" Height="450" Width="800" Background="Aquamarine">
     <Grid>
-        <Label Content="Продукты в наличии" FontSize="30" FontWeight="Bold" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="20"></Label>
-        <DataGrid x:Name="InfoDataGrid" Width="720" Height="270" PreviewKeyDown="InfoDataGrid_OnPreviewKeyDown" CanUserDeleteRows="False" AutoGenerateColumns="True" FontSize="25">
-            </DataGrid>
-            <Button x:Name="AddButton" Height="50" Width="160" Content="Добавить" FontSize="30" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="100 0 0 15" Click="AddButton_OnClick"></Button>
-        <Button x:Name="DeleteButton" Height="50" Width="160" Content="Удалить" FontSize="30" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0 0 100 15" Click="DeleteButton_OnClick"></Button>
+        <TextBlock Text="Добро пожаловать в наш магазин! Выберите нужное действие!" TextWrapping="Wrap" TextAlignment="Center" HorizontalAlignment="Center" 
+                   FontSize="35" Width="700" Margin="30"></TextBlock>
+        <Button x:Name ="ButtonBye"  Content="Совершить покупку" HorizontalAlignment="Center" VerticalAlignment="Center" Height="120" Width="330"  FontSize="30" FontWeight="Bold"
+                Background="Yellow" Click="ButtonBye_OnClick"></Button>
+        <Button x:Name ="ButtonHelp" Content="Нужна помощь" HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="80" Width="200" FontSize="25" 
+                Margin="30" Background="CadetBlue" Click="ButtonHelp_OnClick"></Button>
+        <Label Content="Только для сотрудников" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin=" 0 0 30 110" FontSize="17"></Label>
+        <Button x:Name ="ButtonToStorehouse" Content="Зайти на склад" HorizontalAlignment="Right" VerticalAlignment="Bottom"  Height="80" Width="200" FontSize="25"
+                Margin="30" Background="CadetBlue" Click="ButtonToStorehouse_OnClick"></Button>
+        
     </Grid>
 </Window>

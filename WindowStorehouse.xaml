@@ -1,0 +1,16 @@
+﻿<Window x:Class="BoxOffice.WindowStorehouse"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BoxOffice"
+        mc:Ignorable="d"
+        Title="WindowStorehouse" Height="450" Width="800" Background="Pink">
+    <Grid>
+        <Label Content="Продукты в наличии" FontSize="30" FontWeight="Bold" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="20"></Label>
+        <DataGrid x:Name="InfoDataGrid" Width="720" Height="270" PreviewKeyDown="InfoDataGrid_OnPreviewKeyDown" CanUserDeleteRows="False" AutoGenerateColumns="True" FontSize="25">
+        </DataGrid>
+        <Button x:Name="AddButton" Height="50" Width="160" Content="Добавить" FontSize="30" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="100 0 0 15" Click="AddButton_OnClick"></Button>
+        <Button x:Name="DeleteButton" Height="50" Width="160" Content="Удалить" FontSize="30" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0 0 100 15" Click="DeleteButton_OnClick"></Button>
+      </Grid>
+</Window>

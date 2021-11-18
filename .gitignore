@@ -78,3 +78,9 @@ obj/Release/WindowAddColourOrType.g.cs
 obj/Release/WindowAddColourOrType.g.i.cs
 obj/Debug/TempPE/Properties.Resources.Designer.cs.dll
 obj/Debug/WindowDelete.g.i.cs
+obj/Debug/WindowShoppingChoice.baml
+obj/Debug/WindowShoppingChoice.g.cs
+obj/Debug/WindowShoppingChoice.g.i.cs
+obj/Debug/WindowStorehouse.baml
+obj/Debug/WindowStorehouse.g.cs
+obj/Debug/WindowStorehouse.g.i.cs
