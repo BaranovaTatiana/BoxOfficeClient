@@ -15,11 +15,11 @@
                 Margin=" 30, 0, 0, 90" Click="ButtonAdd_OnClick"></Button>
         <Label Content="Kоличество товаров" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="80, 0,0, 55" FontSize="25"></Label>
         <ComboBox x:Name="ComboBoxCountProducts" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="360, 0, 0,65" >
-            <TextBlock Text="1"></TextBlock>
-            <TextBlock  Text="2"></TextBlock>
-            <TextBlock  Text="3"></TextBlock>
-            <TextBlock  Text="4"></TextBlock>
-            <TextBlock  Text="5"></TextBlock>
+            <ComboBoxItem Content="1"></ComboBoxItem>
+            <ComboBoxItem Content="2"></ComboBoxItem>
+            <ComboBoxItem Content="3"></ComboBoxItem>
+            <ComboBoxItem Content="4"></ComboBoxItem>
+            <ComboBoxItem Content="5"></ComboBoxItem>
         </ComboBox>
         <Button x:Name="ButtonDelete" Height="50" Width="250" Content="Удалить из корзины" FontSize="25" HorizontalAlignment="Left" VerticalAlignment="Bottom" 
                 Margin="30, 0,0, 15" Click="ButtonDelete_OnClick"></Button>

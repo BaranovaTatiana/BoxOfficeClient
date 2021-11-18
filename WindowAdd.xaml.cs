@@ -95,9 +95,14 @@ namespace BoxOffice
                 MessageBox.Show("Заполните все поля!");
                 return;
             }
+           
             //int price = Int32.Parse(NewPrice.Text);
             //string sqlExpression = "insert into Food values('" + NewName.Text + "', " + _idColor + ", " + price + ", " + _idType + ")";
             DataBaseHandler.AddItemToFood(NewName.Text, _idColor.ToString(), NewPrice.Text.ToString(), _idType.ToString());
+
+
+            MessageBox.Show("Продукт добавлен на базу");
+            Close();
         }
     }
 

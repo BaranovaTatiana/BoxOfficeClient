@@ -30,7 +30,8 @@ namespace BoxOffice
         
         private void ButtonToStorehouse_OnClick(object sender, RoutedEventArgs e)
         {
-            
+            WindowStorehouse windowStorehouse = new WindowStorehouse();
+            windowStorehouse.Show();
         }
 
         private void ButtonHelp_OnClick(object sender, RoutedEventArgs e)
