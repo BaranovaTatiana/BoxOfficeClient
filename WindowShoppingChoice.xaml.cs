@@ -32,9 +32,10 @@ namespace BoxOffice
         {
             InfoDataGrid.ItemsSource = DataBaseHandler.GetAllItems().DefaultView;
         }
-        private void ButttonFurther_OnClick(object sender, RoutedEventArgs e)
+        private void ButtonFurther_OnClick(object sender, RoutedEventArgs e)
         {
-            
+            WindowShoppingList windowShopping = new WindowShoppingList(_shoppingList);
+            windowShopping.Show();
         }
 
         private void ButtonAdd_OnClick(object sender, RoutedEventArgs e)
@@ -45,8 +46,9 @@ namespace BoxOffice
                 return;
             }
 
-            int count = Int32.Parse(ComboBoxCountProducts.SelectionBoxItem.ToString());
-            _shoppingList.Add(count, (DataRowView)InfoDataGrid.SelectedItem);
+            //int count = ComboBoxCountProducts.SelectionBoxItem.ToString() == null? 1 : Int32.Parse(ComboBoxCountProducts.SelectionBoxItem.ToString());
+           
+            //_shoppingList.Add(count, (DataRowView)InfoDataGrid.SelectedItem);
         }
 
         private void ButtonDelete_OnClick(object sender, RoutedEventArgs e)

@@ -1,0 +1,21 @@
+﻿<Window x:Class="BoxOffice.WindowShoppingList"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BoxOffice"
+        mc:Ignorable="d"
+        Title="WindowShoppingList" Height="450" Width="800" Background="Yellow">
+    <Grid>
+        <Label Content="Список покупок" HorizontalAlignment="Center" FontSize="50" ></Label>
+        <!--<DataGrid x:Name="ShoppingListDataGrid" HorizontalAlignment="Center" VerticalAlignment="Center" Height="220" Width="700" Margin="0,0,0,50"
+                  FontSize="20"></DataGrid>-->
+        <TextBlock x:Name="ShoppingList" HorizontalAlignment="Center" VerticalAlignment="Center" 
+                   Height="220" Width="700" FontSize="20" ></TextBlock>
+
+        <Button x:Name="ButtonToPayment" Content="Назад" HorizontalAlignment="Left" VerticalAlignment="Bottom" 
+                Margin="20" FontSize="25" Click="ButtonToPayment_OnClick"></Button>
+        <Button x:Name="ButtonToReturn" Content="Оплата" HorizontalAlignment="Right" VerticalAlignment="Bottom" 
+                Margin="20" FontSize="25" Click="ButtonToReturn_OnClick"></Button>
+    </Grid>
+</Window>   

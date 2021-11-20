@@ -1,6 +1,4 @@
-﻿
-
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Linq;
@@ -14,6 +12,7 @@ namespace BoxOffice
     /// </summary>
     public partial class App : Application
     {
-        
+        private static string _connectionString = "Data Source=r00tER-FullPc;Initial Catalog=DBwithCSharp;Integrated Security=True";
+        public static Db MainDb = new Db(_connectionString);
     }
 }

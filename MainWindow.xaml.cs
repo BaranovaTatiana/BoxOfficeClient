@@ -25,6 +25,7 @@ namespace BoxOffice
         public MainWindow()
         {
             InitializeComponent();
+            App.MainDb.ConnectionToDb();
         }
 
         

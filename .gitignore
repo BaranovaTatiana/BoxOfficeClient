@@ -84,3 +84,6 @@ obj/Debug/WindowShoppingChoice.g.i.cs
 obj/Debug/WindowStorehouse.baml
 obj/Debug/WindowStorehouse.g.cs
 obj/Debug/WindowStorehouse.g.i.cs
+obj/Debug/WindowShoppingList.baml
+obj/Debug/WindowShoppingList.g.cs
+obj/Debug/WindowShoppingList.g.i.cs
