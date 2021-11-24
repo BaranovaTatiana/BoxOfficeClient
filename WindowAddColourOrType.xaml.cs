@@ -55,10 +55,10 @@ namespace BoxOffice
             switch (_kind)
             {
                 case KindTable.Type:
-                    DataBaseHandler.AddItemToColorOrType(TextBoxAdd.Text, "Types");
+                    App.MainDb.Types.InsertRow(TextBoxAdd.Text);
                     break;
                 case KindTable.Color:
-                    DataBaseHandler.AddItemToColorOrType(TextBoxAdd.Text, "Colors");
+                    App.MainDb.Colors.InsertRow(TextBoxAdd.Text);
                     break;
             }
             Close();

@@ -87,3 +87,6 @@ obj/Debug/WindowStorehouse.g.i.cs
 obj/Debug/WindowShoppingList.baml
 obj/Debug/WindowShoppingList.g.cs
 obj/Debug/WindowShoppingList.g.i.cs
+obj/Debug/BoxOffice.csproj.CopyComplete
+bin/Debug/DataBaseContact.dll
+bin/Debug/DataBaseContact.pdb

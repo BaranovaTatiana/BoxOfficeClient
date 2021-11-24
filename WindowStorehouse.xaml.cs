@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using DataBaseContact;
 
 namespace BoxOffice
 {
@@ -27,7 +28,7 @@ namespace BoxOffice
         }
         private void FillTable()
         {
-            InfoDataGrid.ItemsSource = DataBaseHandler.GetAllItems().DefaultView;
+            InfoDataGrid.ItemsSource = App.MainDb.Food.GetAllRowsExtended();
         }
         private void AddButton_OnClick(object sender, RoutedEventArgs e)
         {
@@ -41,7 +42,6 @@ namespace BoxOffice
 
         public void DeleteItemFromMainTable()
         {
-
             var selectedItem = (DataRowView)InfoDataGrid.SelectedItem;
            
             if (selectedItem == null)
@@ -49,11 +49,9 @@ namespace BoxOffice
                 MessageBox.Show("Выберите продукт, который хотите удалить из базы");
                 return;
             }
-            //var gg = (DataView)InfoDataGrid.ItemsSource;
-            //gg.Table.Rows.Remove(selectedItem.Row);
             var idItem = selectedItem[0];
 
-            DataBaseHandler.DeleteItemFromFood(Int32.Parse(idItem.ToString()));
+            App.MainDb.Food.DeleteRow(int.Parse(idItem.ToString()));
 
             selectedItem.Delete();
 

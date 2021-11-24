@@ -55,16 +55,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ColorProducts.cs" />
     <Compile Include="DataBaseHandler.cs" />
-    <Compile Include="Db.cs" />
-    <Compile Include="Food.cs" />
     <Compile Include="KindTable.cs" />
-    <Compile Include="RowColor.cs" />
-    <Compile Include="RowFood.cs" />
-    <Compile Include="RowFoodExtended.cs" />
-    <Compile Include="RowType.cs" />
-    <Compile Include="TypeProducts.cs" />
     <Compile Include="WindowAdd.xaml.cs">
       <DependentUpon>WindowAdd.xaml</DependentUpon>
     </Compile>
@@ -138,6 +130,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DataBaseContact\DataBaseContact.csproj">
+      <Project>{f04db21c-dd7d-4624-93c5-cc0c27f6af74}</Project>
+      <Name>DataBaseContact</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

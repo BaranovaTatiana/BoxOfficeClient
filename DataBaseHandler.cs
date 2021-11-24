@@ -10,7 +10,7 @@ using System.Windows.Controls;
 
 namespace BoxOffice
 {
-    public static class DataBaseHandler
+    public static class DataHandler
     {
         private static string _connectionString = "Data Source=r00tER-FullPc;Initial Catalog=DBwithCSharp;Integrated Security=True";
 

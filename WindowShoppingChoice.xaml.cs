@@ -30,7 +30,9 @@ namespace BoxOffice
         }
         private void FillTable()
         {
-            InfoDataGrid.ItemsSource = DataBaseHandler.GetAllItems().DefaultView;
+           // ???????????? InfoDataGrid.ItemsSource = DataBaseHandler.GetAllItems().DefaultView;
+
+           InfoDataGrid.ItemsSource = App.MainDb.Food.GetAllRowsExtended();
         }
         private void ButtonFurther_OnClick(object sender, RoutedEventArgs e)
         {

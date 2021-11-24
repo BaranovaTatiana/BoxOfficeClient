@@ -14,6 +14,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using DataBaseContact;
 
 namespace BoxOffice
 {
@@ -37,25 +38,18 @@ namespace BoxOffice
 
         private void FillColors()
         {
-            foreach (DataRow row in DataBaseHandler.GetColorsOrTypes("Color", "Colors").Rows)
+            foreach (RowColor row in App.MainDb.Colors.GetAllRows())
             {
-                foreach (object item in row.ItemArray)
-                {
-                    AddItemToComboBox(item.ToString(), ColorCombo);
-                }
+                AddItemToComboBox(row.Name, ColorCombo);
             }
             
         }
         private void FillTypes()
         {
-            foreach (DataRow row in DataBaseHandler.GetColorsOrTypes("Type", "Types").Rows)
+            foreach (var rowType in App.MainDb.Types.GetAllRows())
             {
-                foreach (object item in row.ItemArray)
-                {
-                    AddItemToComboBox(item.ToString(), TypeCombo);
-                }
+                AddItemToComboBox(rowType.Name, TypeCombo);
             }
-            
         }
 
         private void AddItemToComboBox(string newItem, ComboBox cb)
@@ -98,8 +92,8 @@ namespace BoxOffice
            
             //int price = Int32.Parse(NewPrice.Text);
             //string sqlExpression = "insert into Food values('" + NewName.Text + "', " + _idColor + ", " + price + ", " + _idType + ")";
-            DataBaseHandler.AddItemToFood(NewName.Text, _idColor.ToString(), NewPrice.Text.ToString(), _idType.ToString());
 
+            App.MainDb.Food.InsertRow(NewName.Text, _idType, _idColor, double.Parse(NewPrice.Text));
 
             MessageBox.Show("Продукт добавлен на базу");
             Close();
