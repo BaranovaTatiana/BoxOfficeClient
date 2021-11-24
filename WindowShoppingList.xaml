@@ -13,9 +13,10 @@
         <TextBlock x:Name="ShoppingList" HorizontalAlignment="Center" VerticalAlignment="Center" 
                    Height="220" Width="700" FontSize="20" ></TextBlock>
 
-        <Button x:Name="ButtonToPayment" Content="Назад" HorizontalAlignment="Left" VerticalAlignment="Bottom" 
-                Margin="20" FontSize="25" Click="ButtonToPayment_OnClick"></Button>
-        <Button x:Name="ButtonToReturn" Content="Оплата" HorizontalAlignment="Right" VerticalAlignment="Bottom" 
+        <Button x:Name="ButtonToReturn" Content="Назад" HorizontalAlignment="Left" VerticalAlignment="Bottom" 
                 Margin="20" FontSize="25" Click="ButtonToReturn_OnClick"></Button>
+        <TextBlock x:Name="AllPrice" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="20" FontSize="40" Text="Итог: "></TextBlock>
+        <Button x:Name="ButtonToPayment" Content="Оплата" HorizontalAlignment="Right" VerticalAlignment="Bottom" 
+                Margin="20" FontSize="25" Click="ButtonToPayment_OnClick"></Button>
     </Grid>
 </Window>   

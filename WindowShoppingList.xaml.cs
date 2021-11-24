@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using DataBaseContact;
 
 namespace BoxOffice
 {
@@ -20,20 +21,38 @@ namespace BoxOffice
     /// </summary>
     public partial class WindowShoppingList : Window
     {
-        public WindowShoppingList(Dictionary<int, DataRowView> shoppingList)
+        private List<RowFoodExtended> _shoppingList = new List<RowFoodExtended>();
+        public WindowShoppingList(List<RowFoodExtended> shoppingList)
         {
             InitializeComponent();
-            FillTable(shoppingList);
-        }   
-        private void FillTable(Dictionary<int, DataRowView> shoppingList)
+            _shoppingList = shoppingList;
+            FillShoppingList();
+        }
+
+        private void FillShoppingList()
         {
-            //ShoppingListDataGrid.ItemsSource = shoppingList;    
+            foreach (var rowFoodExtended in _shoppingList)
+            {
+                ShoppingList.Text +='\n' + rowFoodExtended.ToString();
+            }
+            PriceAllChoiceProducts();
+        }
+
+        private void PriceAllChoiceProducts()
+        {
+            double price = 0;
+            foreach (var rowFoodExtended in _shoppingList)
+            {
+                price += rowFoodExtended.Price * rowFoodExtended.Count;
+            }
+            AllPrice.Text += price;
         }
         private void ButtonToPayment_OnClick(object sender, RoutedEventArgs e)
         {
-            
+            _shoppingList.Clear();
+            MessageBox.Show("Оплата проведена успешно!");
+            Close();
         }
-
         private void ButtonToReturn_OnClick(object sender, RoutedEventArgs e)
         {
             Close();

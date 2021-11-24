@@ -90,3 +90,9 @@ obj/Debug/WindowShoppingList.g.i.cs
 obj/Debug/BoxOffice.csproj.CopyComplete
 bin/Debug/DataBaseContact.dll
 bin/Debug/DataBaseContact.pdb
+obj/Debug/WindowAddColorsOrType.g.i.cs
+obj/Debug/WindowAddNewParameters.g.i.cs
+obj/Debug/WindowAddТуц.g.i.cs
+obj/Debug/WindowDeleteChoiceProducts.baml
+obj/Debug/WindowDeleteChoiceProducts.g.cs
+obj/Debug/WindowDeleteChoiceProducts.g.i.cs

@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using DataBaseContact;
 
 namespace BoxOffice
 {
@@ -20,9 +21,9 @@ namespace BoxOffice
     /// </summary>
     public partial class WindowShoppingChoice : Window
     {
-        private Dictionary<int, DataRowView> _shoppingList = new Dictionary<int, DataRowView>();
+        //private Dictionary<int, RowFood> _shoppingList = new Dictionary<int, RowFood>();
        
-
+        private List<RowFoodExtended> _shoppingList = new List<RowFoodExtended>();
         public WindowShoppingChoice()
         {
             InitializeComponent();
@@ -30,32 +31,40 @@ namespace BoxOffice
         }
         private void FillTable()
         {
-           // ???????????? InfoDataGrid.ItemsSource = DataBaseHandler.GetAllItems().DefaultView;
-
            InfoDataGrid.ItemsSource = App.MainDb.Food.GetAllRowsExtended();
         }
         private void ButtonFurther_OnClick(object sender, RoutedEventArgs e)
         {
             WindowShoppingList windowShopping = new WindowShoppingList(_shoppingList);
-            windowShopping.Show();
+            windowShopping.Show();  
         }
 
         private void ButtonAdd_OnClick(object sender, RoutedEventArgs e)
         {
-            if ((DataRowView) InfoDataGrid.SelectedItem == null)
+            if (InfoDataGrid != null && InfoDataGrid.SelectedItem == null)
             {
                 MessageBox.Show("Выберите что хотите купить");
                 return;
             }
 
-            //int count = ComboBoxCountProducts.SelectionBoxItem.ToString() == null? 1 : Int32.Parse(ComboBoxCountProducts.SelectionBoxItem.ToString());
-           
-            //_shoppingList.Add(count, (DataRowView)InfoDataGrid.SelectedItem);
-        }
 
+            if (InfoDataGrid != null)
+            {
+                var rf = InfoDataGrid.SelectedItem as RowFoodExtended;
+
+                if (ComboBoxCountProducts.SelectedItem == null) rf.Count = 1;
+                else rf.Count = int.Parse(ComboBoxCountProducts.SelectionBoxItem.ToString());
+
+                _shoppingList.Add(rf);
+                MessageBox.Show("Продукт добавлен в корзину!");
+                ComboBoxCountProducts.SelectedIndex = -1;
+            }
+        }
+            
         private void ButtonDelete_OnClick(object sender, RoutedEventArgs e)
         {
-            
+            WindowDeleteChoiceProducts delete = new WindowDeleteChoiceProducts(_shoppingList);
+            delete.Show();
         }
     }
 }

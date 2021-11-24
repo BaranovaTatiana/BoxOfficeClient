@@ -21,13 +21,13 @@ namespace BoxOffice
     public partial class WindowAddColourOrType : Window
     { 
         public string  NameOfNewItem
-        {
+        {   
             get { return TextBoxAdd.Text; }
         }
 
         
 
-        private KindTable _kind;
+        private KindTable _kind;    
         public WindowAddColourOrType(KindTable kind)
         {
             InitializeComponent();

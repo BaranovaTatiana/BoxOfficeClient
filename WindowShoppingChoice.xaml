@@ -14,7 +14,7 @@
         <Button x:Name="ButtonAdd" Content="Добавить в корзину" Height="50" Width="250" FontSize="25" HorizontalAlignment="Left" VerticalAlignment="Bottom" 
                 Margin=" 30, 0, 0, 90" Click="ButtonAdd_OnClick"></Button>
         <Label Content="Kоличество товаров" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="80, 0,0, 55" FontSize="25"></Label>
-        <ComboBox x:Name="ComboBoxCountProducts" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="360, 0, 0,65" >
+        <ComboBox x:Name="ComboBoxCountProducts" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="360, 0, 0,65" IsEditable="False">
             <ComboBoxItem Content="1"></ComboBoxItem>
             <ComboBoxItem Content="2"></ComboBoxItem>
             <ComboBoxItem Content="3"></ComboBoxItem>

@@ -63,6 +63,9 @@
     <Compile Include="WindowAddColourOrType.xaml.cs">
       <DependentUpon>WindowAddColourOrType.xaml</DependentUpon>
     </Compile>
+    <Compile Include="WindowDeleteChoiceProducts.xaml.cs">
+      <DependentUpon>WindowDeleteChoiceProducts.xaml</DependentUpon>
+    </Compile>
     <Compile Include="WindowShoppingChoice.xaml.cs">
       <DependentUpon>WindowShoppingChoice.xaml</DependentUpon>
     </Compile>
@@ -89,6 +92,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="WindowAddColourOrType.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WindowDeleteChoiceProducts.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

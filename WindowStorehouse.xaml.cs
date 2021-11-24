@@ -42,19 +42,15 @@ namespace BoxOffice
 
         public void DeleteItemFromMainTable()
         {
-            var selectedItem = (DataRowView)InfoDataGrid.SelectedItem;
-           
+            var selectedItem = InfoDataGrid.SelectedItem as RowFoodExtended;
             if (selectedItem == null)
             {
                 MessageBox.Show("Выберите продукт, который хотите удалить из базы");
                 return;
             }
-            var idItem = selectedItem[0];
+            var idItem = selectedItem.Id;
 
             App.MainDb.Food.DeleteRow(int.Parse(idItem.ToString()));
-
-            selectedItem.Delete();
-
             MessageBox.Show("Продукт удален!");
         }
 
