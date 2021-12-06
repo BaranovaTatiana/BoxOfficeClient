@@ -13,16 +13,23 @@
        
         <Button x:Name="ButtonAdd" Content="Добавить в корзину" Height="50" Width="250" FontSize="25" HorizontalAlignment="Left" VerticalAlignment="Bottom" 
                 Margin=" 30, 0, 0, 90" Click="ButtonAdd_OnClick"></Button>
-        <Label Content="Kоличество товаров" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="80, 0,0, 55" FontSize="25"></Label>
-        <ComboBox x:Name="ComboBoxCountProducts" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="360, 0, 0,65" IsEditable="False">
+        <Label Content="Kоличество: " HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="80, 0,0, 95" FontSize="35"></Label>
+        <!--<ComboBox x:Name="ComboBoxCountProducts" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="360, 0, 0,65" IsEditable="False">
             <ComboBoxItem Content="1"></ComboBoxItem>
             <ComboBoxItem Content="2"></ComboBoxItem>
             <ComboBoxItem Content="3"></ComboBoxItem>
             <ComboBoxItem Content="4"></ComboBoxItem>
             <ComboBoxItem Content="5"></ComboBoxItem>
-        </ComboBox>
-        <Button x:Name="ButtonDelete" Height="50" Width="250" Content="Удалить из корзины" FontSize="25" HorizontalAlignment="Left" VerticalAlignment="Bottom" 
-                Margin="30, 0,0, 15" Click="ButtonDelete_OnClick"></Button>
+        </ComboBox>-->
+        <Button x:Name="ButtonPlus" HorizontalAlignment="Center" VerticalAlignment="Bottom" Content="+" Height="50" Width="50"
+                FontSize ="33" FontWeight="Bold" Margin="0 0 90 20" Click="ButtonPlus_OnClick" ></Button>
+        <TextBlock x:Name="TextBlockCountProducts" VerticalAlignment="Bottom" Text="1"  Padding ="20 15 0 0"  Background ="Azure"  Height="70" Width="70"
+                   FontSize ="35" FontWeight="Bold" Margin="70 0 0 20"></TextBlock>
+        <Button x:Name="ButtonMinus" HorizontalAlignment="Center" VerticalAlignment="Bottom" Content="-" Height="50" Width="50"
+                FontSize ="33" FontWeight="Bold" Margin="220 0 0 20" Click="ButtonMinus_OnClick"></Button>
+
+        <Button x:Name="ButtonBasket" Height="50" Width="250" Content="Kорзинa" FontSize="25" HorizontalAlignment="Left" VerticalAlignment="Bottom" 
+                Margin="30, 0,0, 15" Click="ButtonBasket_OnClick"></Button>
         <Button x:Name ="ButttonFurther" Content="Далее" HorizontalAlignment="Right" VerticalAlignment="Bottom" FontSize="35" Height="70" Width="140"
                 Background="Tomato" Click="ButtonFurther_OnClick" Margin="0,0,40,45" FontWeight="Bold"></Button>
 </Grid>

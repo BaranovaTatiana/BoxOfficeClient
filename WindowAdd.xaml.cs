@@ -23,11 +23,8 @@ namespace BoxOffice
     /// </summary>
     public partial class WindowAdd : Window
     {
-        //private DataTable _dtTypes = new DataTable("Types");
-        //private DataTable _dtColors = new DataTable("Colors");
-
-        private int _idType = 0;
-        private int _idColor = 0;
+        private int _idType =0;
+        private int _idColor =0;
         public WindowAdd()
         {
             InitializeComponent();
@@ -73,12 +70,24 @@ namespace BoxOffice
 
         private void TypeCombo_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            _idType = TypeCombo.SelectedIndex+1;
-        }
+            // _idType = TypeCombo.SelectedIndex+1;
 
+            if(App.MainDb.Types.GetAllRows().Contains(ColorCombo.SelectedItem)) _idColor = 1;
+            
+            foreach (var rowType in App.MainDb.Types.GetAllRows())
+            {
+                if (ColorCombo.SelectedItem.Equals(rowType.Name)) _idColor = rowType.Id;
+            }
+        }
+        
         private void ColorCombo_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            _idColor = ColorCombo.SelectedIndex + 1;
+            //_idColor = ColorCombo.SelectedIndex + 1;
+            foreach (var rowColor in App.MainDb.Colors.GetAllRows())
+            {
+                if (ColorCombo.SelectedItem.Equals(rowColor.Name)) _idColor = rowColor.Id;
+            }
+           
         }
 
         private void AddToDbButton_OnClick(object sender, RoutedEventArgs e)
@@ -89,10 +98,6 @@ namespace BoxOffice
                 MessageBox.Show("Заполните все поля!");
                 return;
             }
-           
-            //int price = Int32.Parse(NewPrice.Text);
-            //string sqlExpression = "insert into Food values('" + NewName.Text + "', " + _idColor + ", " + price + ", " + _idType + ")";
-
             App.MainDb.Food.InsertRow(NewName.Text, _idType, _idColor, double.Parse(NewPrice.Text));
 
             MessageBox.Show("Продукт добавлен на базу");

@@ -48,23 +48,34 @@ namespace BoxOffice
             }
 
 
-            if (InfoDataGrid != null)
-            {
-                var rf = InfoDataGrid.SelectedItem as RowFoodExtended;
+            //if (InfoDataGrid != null)
+            //{
+            //    var rf = InfoDataGrid.SelectedItem as RowFoodExtended;
 
-                if (ComboBoxCountProducts.SelectedItem == null) rf.Count = 1;
-                else rf.Count = int.Parse(ComboBoxCountProducts.SelectionBoxItem.ToString());
+            //    if (ComboBoxCountProducts.SelectedItem == null) rf.Count = 1;
+            //    else rf.Count = int.Parse(ComboBoxCountProducts.SelectionBoxItem.ToString());
 
-                _shoppingList.Add(rf);
-                MessageBox.Show("Продукт добавлен в корзину!");
-                ComboBoxCountProducts.SelectedIndex = -1;
-            }
+            //    _shoppingList.Add(rf);
+            //    MessageBox.Show("Продукт добавлен в корзину!");
+            //    ComboBoxCountProducts.SelectedIndex = -1;
+            //}
         }
             
-        private void ButtonDelete_OnClick(object sender, RoutedEventArgs e)
+        private void ButtonBasket_OnClick(object sender, RoutedEventArgs e)
         {
             WindowDeleteChoiceProducts delete = new WindowDeleteChoiceProducts(_shoppingList);
             delete.Show();
+
+        }
+
+        private void ButtonMinus_OnClick(object sender, RoutedEventArgs e)
+        {
+            //int.Parse(TextBlockCountProducts.Text.ToString()) -= 1;
+        }
+
+        private void ButtonPlus_OnClick(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }
